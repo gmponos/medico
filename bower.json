@@ -1,16 +1,11 @@
 {
-  "name": "Medical",
-  "description": "Mamageiremata template",
+  "name": "Medico",
+  "description": "Medical",
   "dependencies": {
     "jquery": "*",
     "bootstrap": "*",
     "font-awesome": "*"
   },
-  "keywords": [
-    "motion",
-    "physics",
-    "particles"
-  ],
   "authors": [
     "George Mponos <gmponos@gmail.com>"
   ],
