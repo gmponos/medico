@@ -2,9 +2,7 @@
   "name": "Medico",
   "description": "Medical",
   "dependencies": {
-    "jquery": "*",
-    "bootstrap": "*",
-    "font-awesome": "*"
+    "jquery": "*"
   },
   "authors": [
     "George Mponos <gmponos@gmail.com>"
