@@ -31,5 +31,12 @@ class AppView extends View
      */
     public function initialize()
     {
+        $this->loadHelper('Html', [
+            'className' => 'CakeBootstrap.BootstrapHtml'
+        ]);
+
+        $this->loadHelper('Form', [
+            'className' => 'CakeBootstrap.BootstrapForm'
+        ]);
     }
 }

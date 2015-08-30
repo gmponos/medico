@@ -25,31 +25,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->css('CakeBootstrap.bootstrap') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
     <header>
-        <div class="header-title">
-            <span><?= $this->fetch('title') ?></span>
-        </div>
-        <div class="header-help">
-            <span><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></span>
-            <span><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></span>
+        <div class="container">
+            <?= $this->Html->pageHeader($this->fetch('title'), 'h3'); ?>
         </div>
     </header>
-    <div id="container">
-
-        <div id="content">
+    <div id="content">
+        <div class="container">
             <?= $this->Flash->render() ?>
-
-            <div class="row">
-                <?= $this->fetch('content') ?>
-            </div>
+            <?= $this->fetch('content') ?>
         </div>
-        <footer>
-        </footer>
     </div>
+    <footer>
+    </footer>
 </body>
 </html>
