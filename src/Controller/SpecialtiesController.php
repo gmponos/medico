@@ -49,7 +49,7 @@ class SpecialtiesController extends AppController
         if ($this->request->is('post')) {
             $specialty = $this->Specialties->patchEntity($specialty, $this->request->data);
             if ($this->Specialties->save($specialty)) {
-                $this->Flash->success(__('The specialty has been saved.'));
+                $this->Flash->success(__('The specialty has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The specialty could not be saved. Please, try again.'));
@@ -74,7 +74,7 @@ class SpecialtiesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $specialty = $this->Specialties->patchEntity($specialty, $this->request->data);
             if ($this->Specialties->save($specialty)) {
-                $this->Flash->success(__('The specialty has been saved.'));
+                $this->Flash->success(__('The specialty has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The specialty could not be saved. Please, try again.'));

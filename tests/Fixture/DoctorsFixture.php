@@ -57,8 +57,8 @@ class DoctorsFixture extends TestFixture
             'phone' => 'Lorem ipsum dolor sit amet',
             'city' => 'Lorem ipsum dolor sit amet',
             'cellphone' => 'Lorem ipsum dolor sit amet',
-            'created' => '2015-08-25 19:21:51',
-            'updated' => '2015-08-25 19:21:51'
+            'created' => '2015-08-31 18:18:16',
+            'updated' => '2015-08-31 18:18:16'
         ],
     ];
 }

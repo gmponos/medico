@@ -26,7 +26,7 @@ class SpecialtiesTable extends Table
         parent::initialize($config);
 
         $this->table('specialties');
-        $this->displayField('id');
+        $this->displayField('specialty');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');

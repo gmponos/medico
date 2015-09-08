@@ -18,7 +18,10 @@ class SpecialtiesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.specialties',
         'app.doctors',
-        'app.visits'
+        'app.visits',
+        'app.diagnoses',
+        'app.medications',
+        'app.medications_visits'
     ];
 
     /**

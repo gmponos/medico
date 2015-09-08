@@ -1,14 +1,19 @@
 <div class="row">
     <div class="col-lg-2 col-md-3">
-        <h3><?= __('Actions') ?></h3>
-        <ul class="side-nav">
-            <li><?= $this->Html->link(__('New Doctor'), ['action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('List Specialties'),
-                    ['controller' => 'Specialties', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('New Specialty'), ['controller' => 'Specialties', 'action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('List Visits'), ['controller' => 'Visits', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('New Visit'), ['controller' => 'Visits', 'action' => 'add']) ?></li>
-        </ul>
+        <div class="panel panel-default">
+            <div class="panel-heading"><?= __('Actions') ?></div>
+            <ul class="list-group">
+                <li class="list-group-item"><?= $this->Html->link(__('New Doctor'), ['action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Specialties'),
+                        ['controller' => 'Specialties', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('New Specialty'),
+                        ['controller' => 'Specialties', 'action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Visits'),
+                        ['controller' => 'Visits', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('New Visit'),
+                        ['controller' => 'Visits', 'action' => 'add']) ?></li>
+            </ul>
+        </div>
     </div>
     <div class="col-lg-10 col-md-9">
         <table class="table table-hover table-striped table-bordered small">
@@ -37,21 +42,23 @@
                     <td><?= h($doctor->address) ?></td>
                     <td><?= h($doctor->phone) ?></td>
                     <td><?= h($doctor->city) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $doctor->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $doctor->id]) ?>
+                    <td>
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $doctor->id], ['icon' => 'search']) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $doctor->id], ['icon' => 'pencil']) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $doctor->id],
-                            ['confirm' => __('Are you sure you want to delete # {0}?', $doctor->id)]) ?>
+                            [
+                                'icon' => 'times',
+                                'confirm' => __('Are you sure you want to delete # {0}?', $doctor->id)
+                            ])
+                        ?>
                     </td>
                 </tr>
-
             <?php endforeach; ?>
             </tbody>
         </table>
         <div class="paginator">
-            <?= $this->element('CakeBootstrap.pagination'); ?>
-            <?= $this->element('CakeBootstrap.paging'); ?>
-            <p><?= $this->Paginator->counter() ?></p>
+            <?= $this->element('CakeBootstrap.pagination') ?>
+            <?= $this->element('CakeBootstrap.paging') ?>
         </div>
     </div>
 </div>

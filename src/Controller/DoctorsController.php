@@ -52,7 +52,7 @@ class DoctorsController extends AppController
         if ($this->request->is('post')) {
             $doctor = $this->Doctors->patchEntity($doctor, $this->request->data);
             if ($this->Doctors->save($doctor)) {
-                $this->Flash->success(__('The doctor has been saved.'));
+                $this->Flash->success(__('The doctor has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The doctor could not be saved. Please, try again.'));
@@ -78,7 +78,7 @@ class DoctorsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $doctor = $this->Doctors->patchEntity($doctor, $this->request->data);
             if ($this->Doctors->save($doctor)) {
-                $this->Flash->success(__('The doctor has been saved.'));
+                $this->Flash->success(__('The doctor has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The doctor could not be saved. Please, try again.'));

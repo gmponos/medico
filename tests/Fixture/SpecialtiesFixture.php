@@ -40,8 +40,8 @@ class SpecialtiesFixture extends TestFixture
         [
             'id' => 1,
             'specialty' => 'Lorem ipsum dolor sit amet',
-            'created' => '2015-08-25 19:43:43',
-            'updated' => '2015-08-25 19:43:43'
+            'created' => '2015-08-31 18:51:00',
+            'updated' => '2015-08-31 18:51:00'
         ],
     ];
 }

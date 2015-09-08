@@ -52,7 +52,7 @@ class VisitsController extends AppController
         if ($this->request->is('post')) {
             $visit = $this->Visits->patchEntity($visit, $this->request->data);
             if ($this->Visits->save($visit)) {
-                $this->Flash->success(__('The visit has been saved.'));
+                $this->Flash->success(__('The visit has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The visit could not be saved. Please, try again.'));
@@ -80,7 +80,7 @@ class VisitsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $visit = $this->Visits->patchEntity($visit, $this->request->data);
             if ($this->Visits->save($visit)) {
-                $this->Flash->success(__('The visit has been saved.'));
+                $this->Flash->success(__('The visit has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The visit could not be saved. Please, try again.'));
