@@ -12,41 +12,12 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-use Cake\Cache\Cache;
-use Cake\Core\Configure;
-use Cake\Datasource\ConnectionManager;
-use Cake\Error\Debugger;
-use Cake\Network\Exception\NotFoundException;
-
-$this->layout = false;
-
-if (!Configure::read('debug')):
-    throw new NotFoundException();
-endif;
-
-$cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $cakeDescription ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
-
-    <?= $this->Html->css('CakeBootstrap.bootstrap') ?>
-</head>
-<body class="home">
     <header>
         <div class="container">
-            <?= $this->Html->image('http://cakephp.org/img/cake-logo.png') ?>
         </div>
     </header>
     <div class="container">
     </div>
     <footer class="footer">
     </footer>
-</body>
-</html>
