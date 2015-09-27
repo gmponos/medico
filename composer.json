@@ -9,7 +9,7 @@
     "cakephp/cakephp": "~3.0",
     "mobiledetect/mobiledetectlib": "2.*",
     "cakephp/migrations": "~1.0",
-    "cakephp/cakephp_bootstrap" : "*",
+    "cakephp/cakephp_bootstrap": "*",
     "cakephp/plugin-installer": "*",
     "cakedc/users": "~3.0"
   },
@@ -17,10 +17,8 @@
     "psy/psysh": "@stable",
     "cakephp/debug_kit": "~3.0",
     "cakephp/bake": "~1.0",
-    "cakephp/cakephp-codesniffer": "2.*"
-  },
-  "suggest": {
-    "phpunit/phpunit": "Allows automated tests to be run without system-wide install."
+    "cakephp/cakephp-codesniffer": "2.*",
+    "phpunit/phpunit": "*"
   },
   "autoload": {
     "psr-4": {
