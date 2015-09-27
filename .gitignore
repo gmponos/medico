@@ -4,3 +4,19 @@
 /logs/*
 .idea
 .htaccess
+nbproject
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+composer.lock
+composer.phar
+
+empty
