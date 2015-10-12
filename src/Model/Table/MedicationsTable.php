@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
 /**
  * Medications Model
  *
- * @property \Cake\ORM\Association\BelongsToMany $Visits
+ * @property \Cake\ORM\Association\HasMany $Treatments
  */
 class MedicationsTable extends Table
 {
@@ -26,15 +26,13 @@ class MedicationsTable extends Table
         parent::initialize($config);
 
         $this->table('medications');
-        $this->displayField('id');
+        $this->displayField('medication');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsToMany('Visits', [
-            'foreignKey' => 'medication_id',
-            'targetForeignKey' => 'visit_id',
-            'joinTable' => 'medications_visits'
+        $this->hasMany('Treatments', [
+            'foreignKey' => 'medication_id'
         ]);
     }
 
@@ -57,7 +55,7 @@ class MedicationsTable extends Table
             ->add('medication', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->allowEmpty('medicationscol');
+            ->allowEmpty('description');
 
         return $validator;
     }

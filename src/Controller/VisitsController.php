@@ -19,7 +19,7 @@ class VisitsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Doctors', 'Diagnoses']
+            'contain' => ['Doctors']
         ];
         $this->set('visits', $this->paginate($this->Visits));
         $this->set('_serialize', ['visits']);
@@ -35,7 +35,7 @@ class VisitsController extends AppController
     public function view($id = null)
     {
         $visit = $this->Visits->get($id, [
-            'contain' => ['Doctors', 'Diagnoses', 'Medications']
+            'contain' => ['Doctors']
         ]);
         $this->set('visit', $visit);
         $this->set('_serialize', ['visit']);
@@ -59,9 +59,7 @@ class VisitsController extends AppController
             }
         }
         $doctors = $this->Visits->Doctors->find('list', ['limit' => 200]);
-        $diagnoses = $this->Visits->Diagnoses->find('list', ['limit' => 200]);
-        $medications = $this->Visits->Medications->find('list', ['limit' => 200]);
-        $this->set(compact('visit', 'doctors', 'diagnoses', 'medications'));
+        $this->set(compact('visit', 'doctors'));
         $this->set('_serialize', ['visit']);
     }
 
@@ -75,7 +73,7 @@ class VisitsController extends AppController
     public function edit($id = null)
     {
         $visit = $this->Visits->get($id, [
-            'contain' => ['Medications']
+            'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $visit = $this->Visits->patchEntity($visit, $this->request->data);
@@ -87,9 +85,7 @@ class VisitsController extends AppController
             }
         }
         $doctors = $this->Visits->Doctors->find('list', ['limit' => 200]);
-        $diagnoses = $this->Visits->Diagnoses->find('list', ['limit' => 200]);
-        $medications = $this->Visits->Medications->find('list', ['limit' => 200]);
-        $this->set(compact('visit', 'doctors', 'diagnoses', 'medications'));
+        $this->set(compact('visit', 'doctors'));
         $this->set('_serialize', ['visit']);
     }
 

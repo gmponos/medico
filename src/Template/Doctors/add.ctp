@@ -3,15 +3,13 @@
         <div class="panel panel-default">
             <div class="panel-heading"><?= __('Actions') ?></div>
             <ul class="list-group">
-                <li class="list-group-item"><?= $this->Html->link(__('List Doctors'), ['action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('List Specialties'),
-                        ['controller' => 'Specialties', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('New Specialty'),
-                        ['controller' => 'Specialties', 'action' => 'add']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('List Visits'),
-                        ['controller' => 'Visits', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('New Visit'),
-                        ['controller' => 'Visits', 'action' => 'add']) ?></li>
+                <li class="list-group-item">
+                    <?= $this->Html->link(__('Back'), ['action' => 'index']) ?>
+                </li>
+                <li class="list-group-item">
+                    <?= $this->Html->link(__('List Specialties'),
+                        ['controller' => 'Specialties', 'action' => 'index']) ?>
+                </li>
             </ul>
         </div>
     </div>
@@ -22,7 +20,8 @@
             <?php
             echo $this->Form->input('firstname');
             echo $this->Form->input('lastname');
-            echo $this->Form->input('specialty_id', ['options' => $specialties]);
+            echo $this->Form->chosen('specialty_id', ['options' => $specialties]);
+            echo $this->Form->chosen('hospital_id', ['options' => $hospitals]);
             echo $this->Form->input('address');
             echo $this->Form->input('phone');
             echo $this->Form->input('city');

@@ -4,7 +4,11 @@
             <ul class="nav navbar-nav">
                 <li><?= $this->Html->link(__('Doctors'), ['controller' => 'doctors', 'action' => 'index']) ?></li>
                 <li><?= $this->Html->link(__('Hospitals'), ['controller' => 'hospitals', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('Appointments'), ['controller' => 'appointments', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Appointments'),
+                        ['controller' => 'appointments', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Visits'), ['controller' => 'visits', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Medications'),
+                        ['controller' => 'medications', 'action' => 'index']) ?></li>
             </ul>
         </div>
     </div>

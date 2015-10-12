@@ -1,6 +1,6 @@
 {
-  "name": "cakephp/app",
-  "description": "CakePHP skeleton app",
+  "name": "medico/medico",
+  "description": "An application to track your doctors visits",
   "homepage": "http://cakephp.org",
   "type": "project",
   "license": "MIT",
@@ -9,9 +9,8 @@
     "cakephp/cakephp": "~3.0",
     "mobiledetect/mobiledetectlib": "2.*",
     "cakephp/migrations": "~1.0",
-    "cakephp/cakephp_bootstrap": "*",
-    "cakephp/plugin-installer": "*",
-    "cakedc/users": "~3.0"
+    "cakephp/cakephp_bootstrap": "3.x",
+    "cakephp/plugin-installer": "*"
   },
   "require-dev": {
     "psy/psysh": "@stable",
@@ -34,7 +33,15 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/gmponos/CakeTwitterBootstrap"
+      "url": "https://github.com/gmponos/CakeTwitterBootstrap.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/gmponos/CakeMap.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/gmponos/cakephp-csvview.git"
     }
   ],
   "scripts": {

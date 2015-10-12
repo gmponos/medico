@@ -20,7 +20,7 @@ class HospitalsFixture extends TestFixture
         'id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'hospital' => ['type' => 'string', 'length' => 45, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'updated' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
             'id_UNIQUE' => ['type' => 'unique', 'columns' => ['id'], 'length' => []],
@@ -42,8 +42,8 @@ class HospitalsFixture extends TestFixture
         [
             'id' => 1,
             'hospital' => 'Lorem ipsum dolor sit amet',
-            'created' => '2015-08-25 19:42:52',
-            'updated' => '2015-08-25 19:42:52'
+            'created' => '2015-09-27 14:03:03',
+            'modified' => '2015-09-27 14:03:03'
         ],
     ];
 }

@@ -32,7 +32,7 @@ class MedicationsController extends AppController
     public function view($id = null)
     {
         $medication = $this->Medications->get($id, [
-            'contain' => ['Visits']
+            'contain' => ['Treatments']
         ]);
         $this->set('medication', $medication);
         $this->set('_serialize', ['medication']);
@@ -49,14 +49,13 @@ class MedicationsController extends AppController
         if ($this->request->is('post')) {
             $medication = $this->Medications->patchEntity($medication, $this->request->data);
             if ($this->Medications->save($medication)) {
-                $this->Flash->success(__('The medication has been saved.'));
+                $this->Flash->success(__('The medication has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The medication could not be saved. Please, try again.'));
             }
         }
-        $visits = $this->Medications->Visits->find('list', ['limit' => 200]);
-        $this->set(compact('medication', 'visits'));
+        $this->set(compact('medication'));
         $this->set('_serialize', ['medication']);
     }
 
@@ -70,19 +69,18 @@ class MedicationsController extends AppController
     public function edit($id = null)
     {
         $medication = $this->Medications->get($id, [
-            'contain' => ['Visits']
+            'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $medication = $this->Medications->patchEntity($medication, $this->request->data);
             if ($this->Medications->save($medication)) {
-                $this->Flash->success(__('The medication has been saved.'));
+                $this->Flash->success(__('The medication has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The medication could not be saved. Please, try again.'));
             }
         }
-        $visits = $this->Medications->Visits->find('list', ['limit' => 200]);
-        $this->set(compact('medication', 'visits'));
+        $this->set(compact('medication'));
         $this->set('_serialize', ['medication']);
     }
 

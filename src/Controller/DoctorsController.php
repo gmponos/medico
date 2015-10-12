@@ -19,7 +19,7 @@ class DoctorsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Specialties']
+            'contain' => ['Specialties', 'Hospitals'],
         ];
         $this->set('doctors', $this->paginate($this->Doctors));
         $this->set('_serialize', ['doctors']);
@@ -35,7 +35,7 @@ class DoctorsController extends AppController
     public function view($id = null)
     {
         $doctor = $this->Doctors->get($id, [
-            'contain' => ['Specialties', 'Visits']
+            'contain' => ['Specialties', 'Hospitals', 'Visits', 'Appointments'],
         ]);
         $this->set('doctor', $doctor);
         $this->set('_serialize', ['doctor']);
@@ -59,7 +59,8 @@ class DoctorsController extends AppController
             }
         }
         $specialties = $this->Doctors->Specialties->find('list', ['limit' => 200]);
-        $this->set(compact('doctor', 'specialties'));
+        $hospitals = $this->Doctors->Hospitals->find('list', ['limit' => 200]);
+        $this->set(compact('doctor', 'specialties', 'hospitals'));
         $this->set('_serialize', ['doctor']);
     }
 
@@ -73,7 +74,7 @@ class DoctorsController extends AppController
     public function edit($id = null)
     {
         $doctor = $this->Doctors->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $doctor = $this->Doctors->patchEntity($doctor, $this->request->data);
@@ -85,7 +86,8 @@ class DoctorsController extends AppController
             }
         }
         $specialties = $this->Doctors->Specialties->find('list', ['limit' => 200]);
-        $this->set(compact('doctor', 'specialties'));
+        $hospitals = $this->Doctors->Hospitals->find('list', ['limit' => 200]);
+        $this->set(compact('doctor', 'specialties', 'hospitals'));
         $this->set('_serialize', ['doctor']);
     }
 
@@ -106,5 +108,20 @@ class DoctorsController extends AppController
             $this->Flash->error(__('The doctor could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function export() {
+        $data = [
+            ['τεστ', 'b', 'c'],
+            [1, 2, 3],
+            ['you', 'and', 'me'],
+        ];
+
+        $_serialize = 'data';
+        $_dataEncoding = 'UTF-8';
+        $_csvEncoding = 'WINDOWS-1253';
+        $this->response->download('test.csv');
+        $this->viewBuilder()->className('CsvView.Csv');
+        $this->set(compact('data', '_serialize', '_dataEncoding', '_csvEncoding'));
     }
 }

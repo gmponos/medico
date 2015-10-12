@@ -1,43 +1,42 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('New Hospital'), ['action' => 'add']) ?></li>
-    </ul>
-</div>
-<div class="hospitals index large-10 medium-9 columns">
-    <table cellpadding="0" cellspacing="0">
-    <thead>
-        <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('hospital') ?></th>
-            <th><?= $this->Paginator->sort('created') ?></th>
-            <th><?= $this->Paginator->sort('updated') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($hospitals as $hospital): ?>
-        <tr>
-            <td><?= $this->Number->format($hospital->id) ?></td>
-            <td><?= h($hospital->hospital) ?></td>
-            <td><?= h($hospital->created) ?></td>
-            <td><?= h($hospital->updated) ?></td>
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'view', $hospital->id]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $hospital->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $hospital->id], ['confirm' => __('Are you sure you want to delete # {0}?', $hospital->id)]) ?>
-            </td>
-        </tr>
-
-    <?php endforeach; ?>
-    </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+<div class="row">
+    <div class="col-lg-2 col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?= __('Actions') ?></div>
+            <ul class="list-group">
+                <li class="list-group-item"><?= $this->Html->link(__('New Hospital'), ['action' => 'add']) ?></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-10 col-md-9">
+        <table class="table table-hover table-striped table-bordered small">
+            <thead>
+                <tr>
+                    <th><?= $this->Paginator->sort('hospital') ?></th>
+                    <th><?= __('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hospitals as $hospital): ?>
+                    <tr>
+                        <td><?= h($hospital->hospital) ?></td>
+                        <td>
+                            <?= $this->Html->link('', ['action' => 'view', $hospital->id],
+                                ['icon' => ['class' => 'fa fa-search fa-fw fa-2x']]); ?>
+                            <?= $this->Html->link('', ['action' => 'edit', $hospital->id],
+                                ['icon' => ['class' => 'fa fa-pencil fa-fw fa-2x']]); ?>
+                            <?= $this->Form->postLink('', ['action' => 'delete', $hospital->id], [
+                                'icon' => ['class' => 'fa fa-times fa-fw fa-2x text-danger'],
+                                'confirm' => __('Are you sure you want to delete # {0}?', $hospital->id),
+                            ]);
+                            ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="paginator">
+            <?= $this->element('CakeBootstrap.pagination') ?>
+            <?= $this->element('CakeBootstrap.paging') ?>
+        </div>
     </div>
 </div>

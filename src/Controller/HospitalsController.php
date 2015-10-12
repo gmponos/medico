@@ -32,7 +32,7 @@ class HospitalsController extends AppController
     public function view($id = null)
     {
         $hospital = $this->Hospitals->get($id, [
-            'contain' => []
+            'contain' => ['Doctors.Specialties'],
         ]);
         $this->set('hospital', $hospital);
         $this->set('_serialize', ['hospital']);
@@ -49,7 +49,7 @@ class HospitalsController extends AppController
         if ($this->request->is('post')) {
             $hospital = $this->Hospitals->patchEntity($hospital, $this->request->data);
             if ($this->Hospitals->save($hospital)) {
-                $this->Flash->success(__('The hospital has been saved.'));
+                $this->Flash->success(__('The hospital has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The hospital could not be saved. Please, try again.'));
@@ -69,12 +69,12 @@ class HospitalsController extends AppController
     public function edit($id = null)
     {
         $hospital = $this->Hospitals->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $hospital = $this->Hospitals->patchEntity($hospital, $this->request->data);
             if ($this->Hospitals->save($hospital)) {
-                $this->Flash->success(__('The hospital has been saved.'));
+                $this->Flash->success(__('The hospital has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The hospital could not be saved. Please, try again.'));

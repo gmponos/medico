@@ -1,8 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
-
 /**
  * Specialties Controller
  *
@@ -32,7 +30,7 @@ class SpecialtiesController extends AppController
     public function view($id = null)
     {
         $specialty = $this->Specialties->get($id, [
-            'contain' => ['Doctors']
+            'contain' => ['Doctors.Hospitals'],
         ]);
         $this->set('specialty', $specialty);
         $this->set('_serialize', ['specialty']);
@@ -69,7 +67,7 @@ class SpecialtiesController extends AppController
     public function edit($id = null)
     {
         $specialty = $this->Specialties->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $specialty = $this->Specialties->patchEntity($specialty, $this->request->data);

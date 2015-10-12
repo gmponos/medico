@@ -11,7 +11,9 @@ use Cake\Validation\Validator;
  * Doctors Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Specialties
- * @property \Cake\ORM\Association\HasMany $Visits
+ * @property \Cake\ORM\Association\BelongsTo $Hospitals
+ * @property \Cake\ORM\Association\HasMany   $Appointments
+ * @property \Cake\ORM\Association\HasMany   $Visits
  */
 class DoctorsTable extends Table
 {
@@ -34,10 +36,16 @@ class DoctorsTable extends Table
 
         $this->belongsTo('Specialties', [
             'foreignKey' => 'specialty_id',
-            'joinType' => 'INNER'
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Hospitals', [
+            'foreignKey' => 'hospital_id',
+        ]);
+        $this->hasMany('Appointments', [
+            'foreignKey' => 'doctor_id',
         ]);
         $this->hasMany('Visits', [
-            'foreignKey' => 'doctor_id'
+            'foreignKey' => 'doctor_id',
         ]);
     }
 
@@ -87,6 +95,7 @@ class DoctorsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['specialty_id'], 'Specialties'));
+        $rules->add($rules->existsIn(['hospital_id'], 'Hospitals'));
         return $rules;
     }
 }

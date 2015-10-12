@@ -4,14 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Hospital Entity.
+ * Treatment Entity.
  *
  * @property int $id
- * @property string $hospital
+ * @property int $medication_id
+ * @property \App\Model\Entity\Medication $medication
+ * @property int $visit_id
+ * @property \App\Model\Entity\Visit $visit
+ * @property string|resource $treatment
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  */
-class Hospital extends Entity
+class Treatment extends Entity
 {
 
     /**

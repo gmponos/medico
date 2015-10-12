@@ -9,7 +9,6 @@ use Cake\Validation\Validator;
 
 /**
  * Hospitals Model
- *
  */
 class HospitalsTable extends Table
 {
@@ -25,11 +24,14 @@ class HospitalsTable extends Table
         parent::initialize($config);
 
         $this->table('hospitals');
-        $this->displayField('id');
+        $this->displayField('hospital');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('Doctors', [
+            'foreignKey' => 'hospital_id',
+        ]);
     }
 
     /**

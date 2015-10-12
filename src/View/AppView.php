@@ -2,7 +2,6 @@
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
@@ -23,7 +22,6 @@ class AppView extends View
 
     /**
      * Initialization hook method.
-     *
      * For e.g. use this method to load a helper for all views:
      * `$this->loadHelper('Html');`
      *
@@ -32,11 +30,11 @@ class AppView extends View
     public function initialize()
     {
         $this->loadHelper('Html', [
-            'className' => 'CakeBootstrap.BootstrapHtml'
+            'className' => 'CakeBootstrap.BootstrapHtml',
         ]);
 
         $this->loadHelper('Form', [
-            'className' => 'CakeBootstrap.BootstrapForm'
+            'className' => 'CakeBootstrap.BootstrapForm',
         ]);
     }
 }

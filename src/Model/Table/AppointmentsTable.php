@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
 /**
  * Appointments Model
  *
+ * @property \Cake\ORM\Association\BelongsTo $Doctors
  */
 class AppointmentsTable extends Table
 {
@@ -30,6 +31,10 @@ class AppointmentsTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Doctors', [
+            'foreignKey' => 'doctor_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -46,8 +51,10 @@ class AppointmentsTable extends Table
             ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->add('appointment', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('appointment');
+            ->add('appointment', 'valid', [
+                'rule' => 'datetime',
+            ])
+            ->notEmpty('appointment');
 
         return $validator;
     }

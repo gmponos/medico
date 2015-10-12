@@ -40,9 +40,9 @@ class AppointmentsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'appointment' => '2015-08-30 15:17:25',
-            'created' => '2015-08-30 15:17:25',
-            'updated' => '2015-08-30 15:17:25'
+            'appointment' => '2015-09-27 14:58:09',
+            'created' => '2015-09-27 14:58:09',
+            'updated' => '2015-09-27 14:58:09'
         ],
     ];
 }

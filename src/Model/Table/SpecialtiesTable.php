@@ -32,7 +32,7 @@ class SpecialtiesTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->hasMany('Doctors', [
-            'foreignKey' => 'specialty_id'
+            'foreignKey' => 'specialty_id',
         ]);
     }
 
@@ -46,10 +46,13 @@ class SpecialtiesTable extends Table
     {
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+            ->allowEmpty('id', 'create')
+            ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->allowEmpty('specialty');
+            ->requirePresence('specialty', 'create')
+            ->notEmpty('specialty')
+            ->add('specialty', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         return $validator;
     }

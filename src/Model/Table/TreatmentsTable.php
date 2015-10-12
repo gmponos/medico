@@ -1,19 +1,19 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Visit;
+use App\Model\Entity\Treatment;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Visits Model
+ * Treatments Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Doctors
- * @property \Cake\ORM\Association\HasMany   $Treatments
+ * @property \Cake\ORM\Association\BelongsTo $Medications
+ * @property \Cake\ORM\Association\BelongsTo $Visits
  */
-class VisitsTable extends Table
+class TreatmentsTable extends Table
 {
 
     /**
@@ -26,20 +26,19 @@ class VisitsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('visits');
+        $this->table('treatments');
         $this->displayField('id');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Doctors', [
-            'foreignKey' => 'doctor_id',
-            'joinType' => 'INNER',
+        $this->belongsTo('Medications', [
+            'foreignKey' => 'medication_id',
+            'joinType' => 'INNER'
         ]);
-
-        $this->hasMany('Treatments', [
+        $this->belongsTo('Visits', [
             'foreignKey' => 'visit_id',
-            'joinType' => 'INNER',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -57,14 +56,7 @@ class VisitsTable extends Table
             ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->notEmpty('reason');
-
-        $validator
-            ->notEmpty('diagnose');
-
-        $validator
-            ->add('visited', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('visited');
+            ->allowEmpty('treatment');
 
         return $validator;
     }
@@ -78,7 +70,8 @@ class VisitsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['doctor_id'], 'Doctors'));
+        $rules->add($rules->existsIn(['medication_id'], 'Medications'));
+        $rules->add($rules->existsIn(['visit_id'], 'Visits'));
         return $rules;
     }
 }

@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
 
 /**
  * Appointments Controller
@@ -32,7 +33,7 @@ class AppointmentsController extends AppController
     public function view($id = null)
     {
         $appointment = $this->Appointments->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         $this->set('appointment', $appointment);
         $this->set('_serialize', ['appointment']);
@@ -49,13 +50,14 @@ class AppointmentsController extends AppController
         if ($this->request->is('post')) {
             $appointment = $this->Appointments->patchEntity($appointment, $this->request->data);
             if ($this->Appointments->save($appointment)) {
-                $this->Flash->success(__('The appointment has been saved.'));
+                $this->Flash->success(__('The appointment has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('appointment'));
+        $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
+        $this->set(compact('appointment', 'doctors'));
         $this->set('_serialize', ['appointment']);
     }
 
@@ -69,18 +71,19 @@ class AppointmentsController extends AppController
     public function edit($id = null)
     {
         $appointment = $this->Appointments->get($id, [
-            'contain' => []
+            'contain' => ['Doctors'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $appointment = $this->Appointments->patchEntity($appointment, $this->request->data);
             if ($this->Appointments->save($appointment)) {
-                $this->Flash->success(__('The appointment has been saved.'));
+                $this->Flash->success(__('The appointment has been saved.'), ['plugin' => 'CakeBootstrap']);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('appointment'));
+        $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
+        $this->set(compact('appointment', 'doctors'));
         $this->set('_serialize', ['appointment']);
     }
 

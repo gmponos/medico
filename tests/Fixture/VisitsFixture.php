@@ -50,11 +50,11 @@ class VisitsFixture extends TestFixture
         [
             'id' => 1,
             'reason' => 'Lorem ipsum dolor sit amet',
-            'visited' => '2015-09-01 17:46:06',
+            'visited' => '2015-09-27 15:12:05',
             'doctor_id' => 1,
             'diagnose_id' => 1,
-            'created' => '2015-09-01 17:46:06',
-            'modified' => '2015-09-01 17:46:06'
+            'created' => '2015-09-27 15:12:05',
+            'modified' => '2015-09-27 15:12:05'
         ],
     ];
 }
