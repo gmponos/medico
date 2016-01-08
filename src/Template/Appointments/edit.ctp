@@ -11,6 +11,10 @@
                     ?></li>
                 <li class="list-group-item"><?= $this->Html->link(__('List Appointments'),
                         ['action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Doctors'),
+                        ['controller' => 'Doctors', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('New Doctor'),
+                        ['controller' => 'Doctors', 'action' => 'add']) ?></li>
             </ul>
         </div>
     </div>
@@ -19,9 +23,9 @@
         <fieldset>
             <legend><?= __('Edit Appointment') ?></legend>
             <?php
-            echo $this->Form->input('appointment', ['type' => 'text']);
+            echo $this->Form->input('reason');
             echo $this->Form->chosen('doctor_id', ['options' => $doctors]);
-            echo $this->Form->input('reason', ['rows' => 5]);
+            echo $this->Form->datepicker('appointment');
             ?>
         </fieldset>
         <?= $this->Form->btnSubmit() ?>

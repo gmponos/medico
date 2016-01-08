@@ -1,8 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
-
 /**
  * Doctors Controller
  *
@@ -108,20 +106,5 @@ class DoctorsController extends AppController
             $this->Flash->error(__('The doctor could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
-    }
-
-    public function export() {
-        $data = [
-            ['τεστ', 'b', 'c'],
-            [1, 2, 3],
-            ['you', 'and', 'me'],
-        ];
-
-        $_serialize = 'data';
-        $_dataEncoding = 'UTF-8';
-        $_csvEncoding = 'WINDOWS-1253';
-        $this->response->download('test.csv');
-        $this->viewBuilder()->className('CsvView.Csv');
-        $this->set(compact('data', '_serialize', '_dataEncoding', '_csvEncoding'));
     }
 }

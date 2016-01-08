@@ -6,10 +6,10 @@
   "license": "MIT",
   "require": {
     "php": ">=5.4.16",
-    "cakephp/cakephp": "~3.0",
+    "cakephp/cakephp": "3.*",
     "mobiledetect/mobiledetectlib": "2.*",
     "cakephp/migrations": "~1.0",
-    "cakephp/cakephp_bootstrap": "3.x",
+    "cakeoven/cakebootstrap": "3.x",
     "cakephp/plugin-installer": "*"
   },
   "require-dev": {

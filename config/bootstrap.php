@@ -2,6 +2,7 @@
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
@@ -23,8 +24,10 @@ require ROOT . DS . 'vendor' . DS . 'autoload.php';
 
 /**
  * Bootstrap CakePHP.
+ *
  * Does the various bits of setup that CakePHP needs to do.
  * This includes:
+ *
  * - Registering the CakePHP autoloader.
  * - Setting the default application paths.
  */
@@ -45,7 +48,7 @@ use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\ErrorHandler;
 use Cake\Log\Log;
-use Cake\Network\Email\Email;
+use Cake\Mailer\Email;
 use Cake\Network\Request;
 use Cake\Routing\DispatcherFactory;
 use Cake\Utility\Inflector;
@@ -54,6 +57,7 @@ use Cake\Utility\Security;
 /**
  * Read configuration file and inject configuration into various
  * CakePHP classes.
+ *
  * By default there is only one configuration file. It is often a good
  * idea to create multiple configuration files, and separate the configuration
  * that changes from configuration that does not. This makes deployment simpler.
@@ -98,7 +102,7 @@ ini_set('intl.default_locale', 'el_GR');
 /**
  * Register application error and exception handlers.
  */
-$isCli = php_sapi_name() === 'cli';
+$isCli = PHP_SAPI === 'cli';
 if ($isCli) {
     (new ConsoleErrorHandler(Configure::read('Error')))->register();
 } else {
@@ -113,6 +117,7 @@ if ($isCli) {
 /**
  * Set the full base URL.
  * This URL is used as the base of all absolute links.
+ *
  * If you define fullBaseUrl in your config file you can remove this.
  */
 if (!Configure::read('App.fullBaseUrl')) {
@@ -158,6 +163,7 @@ Request::addDetector('tablet', function ($request) {
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the
  * inflection functions.
+ *
  * Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
  * Inflector::rules('irregular', ['red' => 'redlings']);
  * Inflector::rules('uninflected', ['dontinflectme']);
@@ -168,14 +174,14 @@ Request::addDetector('tablet', function ($request) {
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
  * Uncomment one of the lines below, as you need. make sure you read the documentation on Plugin to use more
  * advanced ways of loading plugins
+ *
  * Plugin::loadAll(); // Loads all plugins at once
  * Plugin::load('Migrations'); //Loads a single plugin named Migrations
  */
 
 Plugin::load('Migrations');
 Plugin::load('CakeBootstrap');
-Plugin::load('CakeMap');
-Plugin::load('CsvView');
+
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system
 if (Configure::read('debug')) {
@@ -193,4 +199,5 @@ DispatcherFactory::add('ControllerFactory');
  * Enable default locale format parsing.
  * This is needed for matching the auto-localized string output of Time() class when parsing dates.
  */
+Type::build('date')->useLocaleParser();
 Type::build('datetime')->useLocaleParser();

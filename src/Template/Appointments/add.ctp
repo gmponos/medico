@@ -3,7 +3,15 @@
         <div class="panel panel-default">
             <div class="panel-heading"><?= __('Actions') ?></div>
             <ul class="list-group">
-                <li class="list-group-item"><?= $this->Html->link(__('Back'), ['action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Appointments'), ['action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Doctors'), [
+                        'controller' => 'Doctors',
+                        'action' => 'index',
+                    ]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('New Doctor'), [
+                        'controller' => 'Doctors',
+                        'action' => 'add',
+                    ]) ?></li>
             </ul>
         </div>
     </div>
@@ -12,9 +20,9 @@
         <fieldset>
             <legend><?= __('Add Appointment') ?></legend>
             <?php
-            echo $this->Form->datepicker('appointment');
+            echo $this->Form->input('reason');
             echo $this->Form->chosen('doctor_id', ['options' => $doctors]);
-            echo $this->Form->input('reason', ['rows' => 5]);
+            echo $this->Form->input('appointment');
             ?>
         </fieldset>
         <?= $this->Form->btnSubmit() ?>
