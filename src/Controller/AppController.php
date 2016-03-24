@@ -2,6 +2,7 @@
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
@@ -16,6 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Database\Type;
 use Cake\I18n\Time;
+use Cake\Event\Event;
 
 /**
  * Application Controller
@@ -30,7 +32,10 @@ class AppController extends Controller
 
     /**
      * Initialization hook method.
+     *
      * Use this method to add common initialization code like loading components.
+     *
+     * e.g. `$this->loadComponent('Security');`
      *
      * @return void
      */
@@ -41,5 +46,21 @@ class AppController extends Controller
         $this->loadComponent('Flash', [
             'className' => 'CakeBootstrap.BootstrapFlash',
         ]);
+        $this->loadComponent('RequestHandler');
+    }
+
+    /**
+     * Before render callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeRender(Event $event)
+    {
+        if (!array_key_exists('_serialize', $this->viewVars) &&
+            in_array($this->response->type(), ['application/json', 'application/xml'])
+        ) {
+            $this->set('_serialize', true);
+        }
     }
 }

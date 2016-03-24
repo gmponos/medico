@@ -2,6 +2,7 @@
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
@@ -15,15 +16,21 @@ namespace App\View;
 use Cake\View\View;
 
 /**
- * App View class
+ * Application View
+ *
+ * Your application’s default view class
+ *
+ * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
  */
 class AppView extends View
 {
 
     /**
      * Initialization hook method.
-     * For e.g. use this method to load a helper for all views:
-     * `$this->loadHelper('Html');`
+     *
+     * Use this method to add common initialization code like loading helpers.
+     *
+     * e.g. `$this->loadHelper('Html');`
      *
      * @return void
      */

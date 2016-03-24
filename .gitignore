@@ -1,4 +1,4 @@
-### Windows 
+### Windows
 ## Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -18,7 +18,7 @@ $RECYCLE.BIN/
 ## Windows shortcuts
 *.lnk
 
-### Linux 
+### Linux
 *~
 
 ## KDE directory preferences
@@ -59,7 +59,7 @@ nb-configuration.xml
 /tmp/*
 /logs/*
 
-### Composer 
+### Composer
 composer.phar
 composer.lock
 vendor/
